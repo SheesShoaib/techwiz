@@ -1,0 +1,511 @@
+.main-navbar {
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 20px 0;
+  transition:
+    padding 0.35s ease,
+    background 0.35s ease,
+    border-color 0.35s ease,
+    backdrop-filter 0.35s ease;
+}
+
+.navbar-scrolled {
+  padding: 12px 0;
+  background: rgba(6, 6, 14, 0.82);
+  border-bottom: 1px solid var(--border);
+  backdrop-filter: blur(20px);
+}
+
+.navbar-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 35px;
+}
+
+.fh-logo {
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #ffffff;
+  text-decoration: none;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.logo-symbol {
+  position: relative;
+  width: 47px;
+  height: 47px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  border: 1px solid rgba(139, 92, 246, 0.45);
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba(139, 92, 246, 0.18),
+    rgba(255, 255, 255, 0.025) 65%
+  );
+  transform: rotate(45deg);
+  transition:
+    transform 0.5s ease,
+    box-shadow 0.5s ease;
+}
+
+.fh-logo:hover .logo-symbol {
+  transform: rotate(135deg);
+  box-shadow: 0 0 30px rgba(139, 92, 246, 0.25);
+}
+
+.logo-f,
+.logo-h,
+.logo-slash {
+  transform: rotate(-45deg);
+}
+
+.logo-f,
+.logo-h {
+  position: relative;
+  z-index: 2;
+  color: #ffffff;
+  line-height: 1;
+}
+
+.logo-f {
+  margin-right: 3px;
+}
+
+.logo-h {
+  margin-left: 3px;
+}
+
+.logo-slash {
+  position: relative;
+  z-index: 2;
+  width: 1px;
+  height: 24px;
+  background: linear-gradient(
+    #22d3ee,
+    #8b5cf6
+  );
+  box-shadow: 0 0 10px rgba(139, 92, 246, 0.8);
+}
+
+.logo-orbit-dot {
+  position: absolute;
+  inset: -5px;
+  z-index: 5;
+  border-radius: 50%;
+  border: 1px dashed rgba(255, 255, 255, 0.11);
+  pointer-events: none;
+}
+
+.logo-orbit-dot::before {
+  content: "";
+  position: absolute;
+  top: -3px;
+  left: 50%;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #22d3ee;
+  box-shadow:
+    0 0 8px #22d3ee,
+    0 0 15px #22d3ee;
+}
+
+.logo-name {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  line-height: 1;
+}
+
+.logo-name strong {
+  color: #ffffff;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  white-space: nowrap;
+}
+
+.logo-name span {
+  margin-top: 6px;
+  color: #8b5cf6;
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.55em;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.nav-links a {
+  position: relative;
+  color: #b5b5c5;
+  font-size: 0.87rem;
+  font-weight: 600;
+  transition: color var(--transition);
+}
+
+.nav-links a::after {
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: var(--gradient-primary);
+  border-radius: 10px;
+  content: "";
+  transform: translateX(-50%);
+  transition: width var(--transition);
+}
+
+.nav-links a:hover {
+  color: white;
+}
+
+.nav-links a:hover::after {
+  width: 18px;
+}
+
+.navbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.nav-icon-btn,
+.mobile-menu-btn {
+  display: grid;
+  width: 42px;
+  height: 42px;
+  place-items: center;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  color: white;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.nav-icon-btn:hover {
+  background: rgba(255, 255, 255, 0.09);
+  border-color: var(--border-bright);
+}
+
+.join-btn {
+  display: flex;
+  min-height: 42px;
+  align-items: center;
+  gap: 8px;
+  padding: 0 17px;
+  background: white;
+  border-radius: 12px;
+  color: #09090f;
+  font-size: 0.83rem;
+  font-weight: 700;
+  transition: var(--transition);
+}
+
+.join-btn:hover {
+  box-shadow: 0 8px 30px rgba(255, 255, 255, 0.12);
+  color: #09090f;
+  transform: translateY(-2px);
+}
+
+.mobile-menu-btn {
+  display: none;
+}
+
+@media (max-width: 991px) {
+  .nav-links {
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 24px;
+    left: 24px;
+    display: none;
+    align-items: stretch;
+    padding: 18px;
+    background: rgba(12, 12, 25, 0.96);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    backdrop-filter: blur(25px);
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .nav-links.nav-open {
+    display: flex;
+  }
+
+  .nav-links a {
+    padding: 12px 10px;
+  }
+
+  .nav-links a::after {
+    display: none;
+  }
+
+  .mobile-menu-btn {
+    display: grid;
+  }
+}
+
+@media (max-width: 576px) {
+  .join-btn {
+    display: none;
+  }
+
+  .main-navbar {
+    padding: 14px 0;
+  }
+
+  .logo-symbol {
+    width: 40px;
+    height: 40px;
+    font-size: 15px;
+  }
+
+  .logo-name strong {
+    font-size: 13px;
+  }
+}
+
+/* =========================================================
+   admin header animated fanhub logo
+   ========================================================= */
+
+.admin-header-logo {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+
+  margin-right: 8px;
+
+  color: #ffffff;
+  text-decoration: none;
+}
+
+
+/* logo ka main fh symbol */
+
+.admin-logo-symbol {
+  position: relative;
+
+  display: flex;
+
+  width: 42px;
+  height: 42px;
+
+  flex-shrink: 0;
+
+  align-items: center;
+  justify-content: center;
+
+  overflow: visible;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(139, 92, 246, 0.18),
+      rgba(56, 189, 248, 0.05)
+    );
+
+  border: 1px solid
+    rgba(167, 139, 250, 0.25);
+
+  border-radius: 11px;
+
+  box-shadow:
+    inset 0 0 18px rgba(139, 92, 246, 0.08),
+    0 0 20px rgba(139, 92, 246, 0.06);
+}
+
+
+/* f aur h letters */
+
+.admin-logo-f,
+.admin-logo-h {
+  position: absolute;
+
+  z-index: 2;
+
+  font-family: "Space Grotesk", sans-serif;
+
+  font-size: 14px;
+  font-weight: 800;
+
+  line-height: 1;
+}
+
+.admin-logo-f {
+  top: 9px;
+  left: 9px;
+
+  color: #ffffff;
+}
+
+.admin-logo-h {
+  right: 8px;
+  bottom: 8px;
+
+  color: #b8a2ff;
+}
+
+
+/* f aur h ke darmiyan slash */
+
+.admin-logo-slash {
+  position: absolute;
+
+  z-index: 1;
+
+  width: 2px;
+  height: 25px;
+
+  background:
+    linear-gradient(
+      to bottom,
+      #8b5cf6,
+      #38bdf8
+    );
+
+  border-radius: 10px;
+
+  box-shadow:
+    0 0 9px rgba(139, 92, 246, 0.7);
+
+  transform: rotate(35deg);
+}
+
+
+/* ghoomne wala chota dot */
+
+.admin-logo-orbit-dot {
+  position: absolute;
+
+  z-index: 4;
+
+  top: 50%;
+  left: 50%;
+
+  width: 52px;
+  height: 52px;
+
+  margin-top: -26px;
+  margin-left: -26px;
+
+  border-radius: 50%;
+
+  pointer-events: none;
+}
+
+
+/* actual glowing dot */
+
+.admin-logo-orbit-dot::before {
+  position: absolute;
+
+  top: 1px;
+  left: 50%;
+
+  width: 5px;
+  height: 5px;
+
+  background: #9b72ff;
+
+  border-radius: 50%;
+
+  box-shadow:
+    0 0 5px #8b5cf6,
+    0 0 12px rgba(139, 92, 246, 0.9),
+    0 0 20px rgba(56, 189, 248, 0.4);
+
+  content: "";
+
+  transform: translateX(-50%);
+}
+
+
+/* fan hub admin text */
+
+.admin-header-logo-name {
+  display: flex;
+  min-width: 65px;
+
+  flex-direction: column;
+
+  line-height: 1;
+}
+
+.admin-header-logo-name strong {
+  color: #f1f1f6;
+
+  font-size: 11px;
+  font-weight: 800;
+
+  letter-spacing: 0.7px;
+
+  white-space: nowrap;
+}
+
+.admin-header-logo-name span {
+  margin-top: 5px;
+
+  color: #8061d5;
+
+  font-size: 7px;
+  font-weight: 700;
+
+  letter-spacing: 1.8px;
+}
+
+
+/* hover par halka glow */
+
+.admin-header-logo:hover
+.admin-logo-symbol {
+  border-color:
+    rgba(167, 139, 250, 0.42);
+
+  box-shadow:
+    inset 0 0 20px
+      rgba(139, 92, 246, 0.1),
+    0 0 25px
+      rgba(139, 92, 246, 0.13);
+}
+
+
+/* tablet par text hata denge */
+
+@media (max-width: 1150px) {
+  .admin-header-logo-name {
+    display: none;
+  }
+
+  .admin-header-logo {
+    margin-right: 2px;
+  }
+}
+
+
+/* mobile par sidebar menu already branding dega */
+
+@media (max-width: 700px) {
+  .admin-header-logo {
+    display: none;
+  }
+}
